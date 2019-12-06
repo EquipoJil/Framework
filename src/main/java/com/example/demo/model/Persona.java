@@ -1,22 +1,19 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Armando on 28/07/18.
  */
 @Entity
-@Table(name = "productos")
+@Table(name = "personas")
 //@NamedStoredProcedureQueries({
 //    @NamedStoredProcedureQuery(
 //            name = "spProductoSearch", procedureName = "spproductosearch", resultClasses = Producto.class
@@ -25,7 +22,7 @@ import java.util.Date;
 //})
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
-public class Producto {
+public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
@@ -33,24 +30,20 @@ public class Producto {
     @NotBlank
     public String nombre;
 
-     @NotBlank
-    public String modelo;
-
     @NotBlank
-    public String descripcion;
+    public String apellido;
 
     @NotBlank
     public String ciudad;
 
-     @NotBlank
-    public String precio;
+    @NotBlank
+    public String curp;
 
+    @NotBlank
+    public String correo;
 
     // @Column(nullable = false, updatable = true)
-    @Column(updatable = true)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    public Date createdAt;
+
 /*
     public Producto(){
 
@@ -82,21 +75,15 @@ public class Producto {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-     public String getModelo() {
-        return nombre;
+
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
     public String getCiudad() {
         return ciudad;
     }
@@ -104,20 +91,22 @@ public class Producto {
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
-     public String getPrecio() {
-        return precio;
+
+    public String getCurp() {
+        return curp;
     }
 
-    public void setPrecio(String precio) {
-        this.precio = precio;
+    public void setCurp(String curp) {
+        this.curp = curp;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
+
 
 }

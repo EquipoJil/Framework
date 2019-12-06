@@ -47,6 +47,8 @@ public class ProductoController {
         producto.nombre = productoDetails.nombre;
         producto.descripcion = productoDetails.descripcion;
         producto.ciudad = productoDetails.ciudad;
+        producto.precio = productoDetails.precio;
+        producto.modelo = productoDetails.modelo;
 
         Producto updatedProducto = productoRepository.saveAndFlush(producto);
         return updatedProducto;
